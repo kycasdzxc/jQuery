@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        h2 {border:5px solid blue;}
+        a {border:3px solid red;}
+    </style>
+    <script>
+        // 이벤트 전달, 기본이벤트
+        $(function() {
+            $("a").click(function() {
+                console.log("a clicked");
+                $("a").css("background", "orange");
+
+                // event.preventDefault(); // 기본 이벤트 제거
+                // event.stopPropagation(); // 이벤트 전달 금지
+                return false;
+
+            })
+
+            $("h2").click(function() {
+                $(this).css("background", "purple");
+            })
+
+            // p 태그 마우스 올렸을 때 글자가 빨강색 > 그렇지 않으면 검정색
+            // css(), attr(), text(), html()
+
+            $("p").mouseenter(function() {
+                $(this).css("color", "red");
+            }).mouseleave(function() {
+                $(this).css("color", "black");
+            })
+
+            console.log($("p").css("font-size"));
+
+            // css(string) : getter // return type >> string
+            // css(string, string) : setter // return type >> jQuery object
+            // css(object)
+            // css(string, function)
+
+            var colors = ["red", "orange", "green", "blue", "purple"];
+
+            // $("h3").each(function(i) {
+            //     $(this).css("color", colors[i]);
+            // })
+
+            $("h3").css("color", function(i) {
+                return colors[i];
+            }).attr("title", function(i) {
+                return colors[i];
+            }).attr("title", function(i, v) {
+                return "색상 : " + v;
+            })
+            .one("click", function() {
+                alert($(this).attr("title"));
+            })
+            // .click(function() {
+            //     alert($(this).attr("title"));
+            //     $(this).off("click");
+            // })
+
+            // 1. h3 클릭시 현재 자신의 title 값을 alert으로 출력
+            // 2. 단 위의 이벤트는 한번만 동작해야 함.
+
+        })
+        // 입력 양식 이벤트
+
+        // 이벤트 부여
+        // bind, live, delegate, on ... + one
+        // 이벤트 제거
+        // unbind, die, undelegate, off
+    </script>
+</head>
+<body>
+    <h2>
+        <a href = "http://www.naver.com">네이버</a>
+    </h2>
+    <hr>
+    <p>Hello World</p>
+    <h3>1</h3>
+    <h3>2</h3>
+    <h3>3</h3>
+    <h3>4</h3>
+    <h3>5</h3>
+</body>
+</html>

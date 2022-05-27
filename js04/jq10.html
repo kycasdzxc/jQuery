@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1 {width: 100px; height: 100px; background: purple; transition: all 1s;}
+        .box1:hover {background: red; border-radius: 500%;}
+        
+        .box3 {width: 100px; height: 100px; background: yellow}
+        </style>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
+            $(function() {
+                $(".box2").css({width:"100px", height:"100px", background:"blue"})
+                .hover(function() {
+                    $(this).stop().animate({"background-color":"red", "border-radius":"50%"}, 1000);
+                    // $(this).css("background", "red").css("border-radius", "50%");
+                }, function() {
+                    $(this).stop().animate({"background-color":"blue", "border-radius":"0%"}, 1000);
+                    // $(this).css("background", "blue").css("border-radius", "0%");
+                });
+                $(".box3").click(function() {
+                    $(this).stop().animate({width:"+=50", height:"+=50"}, 500);
+                }).dblclick(function() {
+                    $(this).stop().animate({width:"-=50", height:"-=50"}, 500);
+                })
+            })
+        </script>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    
+    <hr>
+    
+    <div class="box3"></div>
+</body>
+</html>

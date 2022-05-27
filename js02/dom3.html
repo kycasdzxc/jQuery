@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        // $("h3") >> selector
+        // $("<h3>") >> create Element
+            $(() => {
+                $("body").prepend($("<h3>").append("hello world") // prepend 는 앞에 떨어짐
+                    // .css("color", "white").css("bacground-color", "blue");
+                    .css({color:"white", backgroundColor:"blue"})
+                    .attr("data-rno", 10))
+                    // .appendTo("body");
+                
+                $("<h3>").append("hello world") // prepend 는 앞에 떨어짐
+                    // .css("color", "white").css("bacground-color", "blue");
+                    .css({color:"white", backgroundColor:"red"})
+                    .attr("data-rno", 10).insertBefore("h3")
+                    // .appendTo("body");
+
+                $("<h3>").append("hello world") // prepend 는 앞에 떨어짐
+                // .css("color", "white").css("bacground-color", "blue");
+                .css({color:"white", backgroundColor:"green"})
+                .attr("data-rno", 10).insertAfter("h3")
+
+                
+            })
+    </script>
+</head>
+<body>
+    <h1>가</h1>
+    <h1>나</h1>
+</body>
+</html>

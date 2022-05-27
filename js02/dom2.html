@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // createElement
+
+        // appendChild
+
+        // createTextNode
+
+        // h3 태그, hello world의 내용을 넣은 태그를 문서 객체로 제작 > body 추가
+        var h3 = document.createElement("h3");
+        var text = document.createTextNode("hello world");
+        h3.appendChild(text);
+
+        // h3 css 글자색 흰색, 배경 검정
+        h3.style.color = 'white';
+        // h3.style.backgroundColor = 'black';
+        h3['style']['background-color'] ='blue';
+        
+        // h3['data-rno'] = 10;
+        h3.setAttribute("data-rno", 10);
+
+        var o = {};
+        o['data-rno'] = 10;
+        console.log(o);
+        console.log(h3);
+
+        window.onload = function() {
+            document.body.appendChild(h3);
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

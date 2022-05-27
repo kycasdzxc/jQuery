@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div, h3 {border:1px solid; padding: 10px;}
+    </style>
+</head>
+<body onclick="alert(0)">
+    <h2 id="id1">hello 1</h2>
+    <h2 id="id2">hello 2</h2>
+
+    <div onclick="alert(1)">
+        <div id="middle">
+        <!-- <div onclick="alert(2); event.stopPropagation()"> -->
+            <div onclick="alert(3)">
+                <h3 onclick="alert(4)">click me</h3>
+            </div>
+        </div>
+    </div>
+    <script>
+        // onclick : 이벤트 속성
+        // click : 이벤트 이름(타입)
+        var h2_1 = document.getElementById("id1");
+
+        h2_1.onclick = function() {
+            alert(5);
+        }
+
+        h2_1.addEventListener("click", function(e) {
+            console.log(e)
+            console.log(event)
+            alert(10)
+        })
+        h2_1.addEventListener("click", function(e) {
+            alert(20)
+        })
+
+        // 중첩된 태그에 같은 이벤트 속성이 발동할 경우
+        // 이벤트는 전파(properation)됨
+        // 이때 전파되는 이벤트 순서는 하위태그 > 상위태그 순서로 전달
+
+        // 버블링 : 하위 > 상위
+        // 캡쳐링 : 상위 > 하위
+        document.getElementById("middle").onclick = function() {
+            alert(2);
+            event.stopPropagation();
+        }
+    </script>
+</body>
+</html>

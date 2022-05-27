@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>A<span>0</span></h2>
+    <h2>B<span>0</span></h2>
+    <button>A</button>
+    <button>B</button>
+
+    <script>
+        document.getElementsByTagName("button")[0].onclick = function() {
+            var a = parseInt(document.getElementsByTagName("span")[0].innerHTML);
+            a += 1;
+            document.getElementsByTagName("span")[0].innerHTML = a;
+        }
+        document.getElementsByTagName("button")[1].onclick = function() {
+            var a = parseInt(document.getElementsByTagName("span")[1].innerHTML);
+            a += 1;
+            document.getElementsByTagName("span")[1].innerHTML = a;
+            document.getElementsByTagName("button")[0].onclick() // B 누르면 A도 같이 올라가게 > 이벤트 트리거
+        }
+    </script>
+</body>
+</html>

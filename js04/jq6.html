@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        // form submit
+        $(function() {
+            // $("form").on("submit", function() {
+            //     event.preventDefault();
+            // });
+
+            // $("form button").click(function() {
+            //     event.preventDefault();
+            // })
+                
+            $("body > button").click(function() {
+                // console.log("클릭됨");
+                // document.createElement("form"); // js dom
+                // $(document.createElement("form")); // jQuery dom
+                // $("<form>")
+
+                // // $(document.createElement("form")).append($("input")).appendTo("body");
+                // $("body").append($(document.createElement("form")).append($("input")));
+
+                // $("body form:eq(1)").submit();
+
+                // 기존 form
+                // $("form").append($("[name='hid1']")).submit();
+                $("form").append($(":hidden")).submit();
+            })
+        })
+    </script>
+</head>
+<body>
+    <form>
+        <input name="value1">
+        <button type="submit">전송</button>
+    </form>
+
+    <input type="hidden" name="hid1" value="10">
+    <button>외부 버튼</button>
+</body>
+</html>

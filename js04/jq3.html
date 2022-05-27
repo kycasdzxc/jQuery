@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .box {width: 100px; height: 50px; background-color: yellow; margin: 10px; display: inline-block;}
+    </style>
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        // box를 클릭하면 box가 더 생김
+        var count = 1;
+        $(function() {
+            // $(".box").click(function() {
+            //     // document.body.innerHTML += "<div class='box'></div>";
+            //     var box = document.createElement("div");
+            //     box.setAttribute("class", "box");
+            //     document.body.appendChild(box);
+            //     // $("body").append($(this).clone());
+            // });
+            
+            // $("body").on("click", ".box", function() {
+            //     $("body").append($(this).clone());
+            // });
+
+            $(".box").click(function() {
+                $("body").append($(this).clone(true));
+                $("span").html($(".box").length)
+            });
+        })
+    </script>
+</head>
+<body>
+    <h2>여기에 <span>1</span>개의 박스가 있습니다</h2>
+    <div class="box"></div>
+</body>
+</html>

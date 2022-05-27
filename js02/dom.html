@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        console.log(1, document.body); // body 태그 렌더링 전
+        window.onload = function() { // event, event target : window, event attr : onload
+            console.log(2, document.body);
+        }
+    </script>
+</head>
+<body>
+    <h1 id="id1">h1 <span>제목</span></h1>
+    <h2 id="id2">h2</h2>
+    <div>
+        <p>p입니다</p>
+    </div>
+    <form name="frm">
+        <input name="id">
+        <input type="password" name="pw">
+        <input type="button" name="btn" value="버튼">
+    </form>
+    <script>
+        console.log(3, document.body); // body 태그 렌더링 후
+        
+        // dom 탐색
+        // 1. name
+        console.log(document.frm)
+        console.log(document.frm.id)
+
+        document.frm.btn.onclick = function() {
+            var id = document.frm.id; // object
+            // for(var i in id) {
+            //     console.log(i, id[i]);
+            // }
+            console.log(id.value);
+            console.log(document.frm.pw.value);
+
+            var h1 = document.getElementById("id1").innerHTML = id.value;
+        }
+
+        // 2. id
+        var h1 = document.getElementById("id1");
+        console.log(h1.innerText);
+        console.log(h1.innerHTML);
+        console.log(h1.outerText);
+        console.log(h1.outerHTML);
+
+        document.frm.id.onkeyup = function() {
+            document.getElementById("id2").innerHTML = this.value;
+        }
+
+        // 3. class, tagName, querySeletor
+        var inputs = document.getElementsByTagName("input");
+        for(var i = 0 ; i < inputs.length ; i++) {
+            console.log(i, inputs[i]);
+        }
+
+        var h1_2 = document.querySelector("#id1");
+
+        console.log(h1 === h1_2);
+        h1.title = '내가 부여한 제목';
+        h1_2.style.color = 'red';
+
+        // console.log(document.querySelector("input"));
+        console.log(document.querySelectorAll("input")[0]);
+
+        // img 추가 (dom)
+        // img src 다음로고
+
+        document.body.innerHTML += "<img src='https://t1.daumcdn.net/daumtop_chanel/op/20200723055344399.png'>"
+    </script>
+</body>
+</html>

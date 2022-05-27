@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=12293d434697f403b4dcc5130e5bc8c6"></script>
+</head>
+<body>
+    
+    <button onclick="getLocation()">geolocation 확인</button>
+    <!-- <button onclick="kakaomap()">카카오 지도 확인</button> -->
+    <div id="demo"></div>
+    <div id="map" style="width:500px;height:400px;"></div>
+    <script>
+        // 12293d434697f403b4dcc5130e5bc8c6
+        const x = document.getElementById("demo");
+        function getLocation() {
+            if (navigator.geolocation) {
+                // getCurrentPosition(f) : 통신사 좌표
+                navigator.geolocation.getCurrentPosition(function(position){
+                    // x.innerHTML = "Latitude: " + position.coords.latitude +
+                    //     "<br>Longitude: " + position.coords.longitude;
+                   
+                    var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+                    var latLng = new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude)
+                    var options = { //지도를 생성할 때 필요한 기본 옵션
+                        center: latLng, //지도의 중심좌표.
+                        level: 3 //지도의 레벨(확대, 축소 정도)
+                    };
+                    var map = new kakao.maps.Map(container, options); // 지도 생성 및 객체 리턴
+                    
+                    // 마커를 생성합니다
+                    var marker = new kakao.maps.Marker({
+                        position: latLng
+                    });
+
+                    // 마커가 지도 위에 표시되도록 설정합니다
+                    marker.setMap(map);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        // 취미 선택 시
+        // 해당 취미 텍스트 색상을 파란색으로
+        // 취미들을 #hobby에 나열
+        $(function() {
+            $("div input").change(function() {
+                // $(this).parent().text();
+                // $(this).parent().css("color", "blue");
+                // $("#hobby").append($(this).parent().text() + " ")
+
+                // var str = "";
+                // $("div input").each(function() {
+                //     if($(this).is(":checked")) {
+                //         str += $(this).parent().text() + " ";
+                //     }
+                //     $("#hobby").html(str);
+                // })
+
+                // // if($(this).is(":checked")) {
+                // //     $(this).parent().css("color", "blue");
+                // // }
+                // // else {
+                // //     $(this).parent().css("color", "black");
+                // // }
+
+                // $(this).parent().css("color", $(this).is(":checked") ? "blue" : "black")
+
+                // console.log($(this).prop("checked"));
+                // console.log($(this).is(":checked"));
+
+                var flag = true;
+                var inputs = document.querySelectorAll("div input")
+                for(var i in inputs) {
+                    if(typeof inputs[i] == "object" && !$(inputs[i]).is(":checked")) {
+                            flag = false;
+                            break;
+                    }
+                }
+                $("#all").prop("checked", flag);
+            })
+            // $("input").attr("checked", "");
+            // $("input").removeAttr("checked", "");
+            // $("input").prop("checked", true);
+
+            $("#all").change(function() {
+                $("input").prop("checked", $(this).is(":checked"));
+            })
+        })
+    </script>
+</head>
+<body>
+    <label>전체 선택<input type="checkbox" id="all"></label>
+    <hr>
+    <div>
+        <label>등산<input type="checkbox" name="hobby" value="climb"></label>
+        <label>낚시<input type="checkbox" name="hobby" value="fishing"></label>
+        <label>당구<input type="checkbox" name="hobby" value="billard"></label>
+        <label>산책<input type="checkbox" name="hobby" value="walk"></label>
+        <p id="hobby"></p>
+    </div>    
+</body>
+</html>

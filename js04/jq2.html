@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {width:50px; height: 50px; background-color: blue; position: absolute; top:0; left:0;}
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(function() {
+            $("textarea").on("keyup", function() {
+                $("#result1").text($(this).val().length);
+            });
+            $("textarea").on("keydown", function() {
+                $("#result2").text($(this).val().length);
+            });
+            $("textarea").on("keypress", function() {
+                $("#result3").text($(this).val().length);
+            });
+
+            $(document).on("keydown", function() {
+                console.log(event.keyCode);
+                switch(event.keyCode) {
+                    case 37: case 100: // left
+                        $("#box").css("left", "-=10px")
+                        break;
+                    case 38: case 104: // up
+                    $("#box").css("top", "-=10px")
+                        break;
+                    case 39: case 102: // right
+                        $("#box").css("left", "+=10px")
+                        break;
+                    case 40: case 98: // down
+                        $("#box").css("top", "+=10px")
+                        break;
+                    case 97:
+                        $("#box").css("left", "-=10px")
+                        $("#box").css("top", "+=10px")
+                        break;
+                    case 99:
+                        $("#box").css("left", "+=10px")
+                        $("#box").css("top", "+=10px")
+                        break;
+                    case 103:
+                        $("#box").css("left", "-=10px")
+                        $("#box").css("top", "-=10px")
+                        break;
+                    case 105:
+                        $("#box").css("left", "+=10px")
+                        $("#box").css("top", "-=10px")
+                        break;
+                    default:
+                        break;
+                }
+            })
+        })
+    </script>
+<body>
+    <textarea rows="10" cols="50"></textarea>
+        <h1>keyup : <span id="result1"></span></h1>
+        <h1>keydown : <span id="result2"></span></h1>
+        <h1>keypress : <span id="result3"></span></h1>
+
+        <div id="box"></div>
+</body>
+</html>

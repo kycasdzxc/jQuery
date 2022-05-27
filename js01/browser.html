@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // browser object
+        // window 객체를 최고 조상으로 하는 브라우저 측 객체
+        // location, history, screen, navigator, document
+        console.log(window);
+        console.log(window.location == location); // url과 관련된 역할
+        console.log(history); // browser 방문기록 status를 stack 구조로 관리
+        console.log(screen); // 운영체제의 화면 해상도 조회, orientation을 이요한 모바일 디바이스 기능 구현
+        console.log(navigator); // 브라우저(운영체제)의 버전 정보 조회, geolocation을 이용한 현재 위치 확인
+        console.log(document);
+
+    </script>
+</head>
+<body>
+    <button type="button" onclick="location.reload">새로 고침</button>
+    <button type="button" onclick="location.href='http://www.naver.com'">네이버 이동</button>
+    <button type="button" onclick="location.replace('http://www.google.com')">구글 이동</button>
+    <button type="button" onclick="location.assign('http://www.daum.net')">다음 이동</button>
+
+    <hr>
+
+    <button type="button" onclick="history.back()">뒤로가기</button>
+    <button type="button" onclick="history.go(-1)">뒤로가기</button>
+    <button type="button" onclick="history.go(1)">앞으로가기</button>
+    <button type="button" onclick="history.forward()">앞으로가기</button>
+
+    <hr>
+
+</body>
+</html>
